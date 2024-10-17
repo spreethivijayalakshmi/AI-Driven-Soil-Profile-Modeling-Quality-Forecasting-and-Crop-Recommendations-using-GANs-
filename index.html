@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Analysis</title>
+</head>
+<body>
+    <h1>Soil Analysis and Profile Generation</h1>
+     <form method="post">
+        <input type="text" name="pH" placeholder="Enter pH (e.g., 6.5)">
+        <input type="text" name="soil_ec" placeholder="Enter Soil EC (e.g., 0.3)">
+        <input type="text" name="phosphorus" placeholder="Enter Phosphorus (e.g., 20)">
+        <input type="text" name="potassium" placeholder="Enter Potassium (e.g., 150)">
+        <input type="text" name="urea" placeholder="Enter Urea (e.g., 35)">
+        <input type="text" name="tsp" placeholder="Enter T.S.P (e.g., 25)">
+        <input type="text" name="mop" placeholder="Enter M.O.P (e.g., 30)">
+        <input type="text" name="moisture" placeholder="Enter Moisture (e.g., 70)">
+        <input type="text" name="temperature" placeholder="Enter Temperature (e.g., 25)">
+
+        <button type="submit" name="submit">Classify Soil</button>
+        <button type="submit" name="generate">Generate Profiles</button>
+    </form>
+
+    <!-- Display the evaluation results -->
+    {% if soil_quality %}
+        <h2>Soil Quality Evaluation</h2>
+        <ul>
+            {% for key, value in soil_quality.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ soil_conclusion }}</p>
+    {% endif %}
+
+    <!-- Display the generated data -->
+    {% if generated_data %}
+        <h2>Generated Soil Profile</h2>
+        <ul>
+            {% for key, value in generated_data.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Display plant type prediction -->
+    {% if plant_type_prediction %}
+        <h2>Predicted Plant Type</h2>
+        <p>{{ plant_type_prediction }}</p>
+    {% endif %}
+</body>
+</html>
